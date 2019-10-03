@@ -21,7 +21,6 @@ import java.util.Optional;
 import java.util.function.BiConsumer;
 
 import static io.airlift.slice.SizeOf.sizeOf;
-import static java.lang.String.format;
 import static java.util.Objects.requireNonNull;
 
 public class ArrayBlock
@@ -44,6 +43,7 @@ public class ArrayBlock
      */
     public static Block fromElementBlock(int positionCount, Optional<boolean[]> valueIsNull, int[] arrayOffset, Block values)
     {
+/*
         validateConstructorArguments(0, positionCount, valueIsNull.orElse(null), arrayOffset, values);
         // for performance reasons per element checks are only performed on the public construction
         for (int i = 0; i < positionCount; i++) {
@@ -56,6 +56,7 @@ public class ArrayBlock
                 throw new IllegalArgumentException("A null array must have zero entries");
             }
         }
+*/
         return new ArrayBlock(0, positionCount, valueIsNull.orElse(null), arrayOffset, values);
     }
 

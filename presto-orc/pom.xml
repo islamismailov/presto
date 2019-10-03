@@ -188,14 +188,30 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.4.0</version>
+        <configuration>
+          <executable>java</executable>
+          <arguments>
+            <argument>-classpath</argument>
+            <classpath />
+            <argument>com.facebook.presto.orc.BenchmarkSelectiveOrcReader</argument>
+          </arguments>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+<!--
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <!-- integration tests take a very long time so only run them in the CI server -->
                     <excludes>
                         <exclude>**/TestFullOrcReader.java</exclude>
                     </excludes>
@@ -219,5 +235,6 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>
+      </profiles>
+-->
 </project>
